@@ -1,0 +1,57 @@
+LAB04
+
+LT02 - DHCP Configuration on Router
+
+enable
+configure terminal
+
+ip dhcp excluded-address 192.168.1.1
+ip dhcp excluded-address 192.168.2.1
+
+ip dhcp pool Lab1_Pool
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+exit
+
+ip dhcp pool Lab2_Pool
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+exit
+
+! ------------------------------------------------
+! ROUTER CONFIGURATION (Run on Router)
+! ------------------------------------------------
+enable
+configure terminal
+
+! Configuring the first interface
+interface FastEthernet0/0
+ip address 10.10.10.1 255.0.0.0
+no shut
+exit
+
+! Configuring the second interface
+interface FastEthernet0/1
+ip address 172.16.10.1 255.255.0.0
+no shut
+exit
+
+! ------------------------------------------------
+! GUI CONFIGURATIONS (Perform manually in Packet Tracer)
+! ------------------------------------------------
+! HTTP & HTTPS SETUP:
+! 1. Click on your Server and navigate to the "Services" tab.
+! 2. Select "HTTP" from the left menu.
+! 3. Ensure both "HTTP" and "HTTPS" radio buttons are set to "On".
+
+! DNS SERVER SETUP:
+! 1. Assign the IP address 35.0.0.1 to your DNS Server.
+! 2. Go to the "Services" tab and select "DNS".
+! 3. Turn the DNS Service "On".
+! 4. Add an A Record -> Name: fast-ai | Address: 35.0.0.1 | Click Save/Add.
+! 5. Add a CNAME Record -> Name: fast | Host Name: fast-ai | Click Save/Add.
+
+! PC TESTING (Run in PC Web Browser):
+! URL: http://192.168.1.2  (HTTP Test)
+! URL: https://192.168.2.2 (HTTPS Test)
+! URL: http://fast-ai      (DNS Test)
