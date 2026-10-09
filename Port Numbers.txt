@@ -1,0 +1,16 @@
+Port Numbers
+
+IMAP 
+SSL/TLS encrypt - 993
+Unencrypted - 143
+
+POP3 - 110
+FTP -21
+secured with SSL/TLS -> FTPS
+or replaced by SSH File Transfer Protocol -> SFTPS 
+SMTP - 25 (mail server to mail server)
+587 (mail clients use this to drop off their mails to mail servers)
+465 (deprecated, but mail providers do permit the use of non standard port)
+
+HTTP - 80
+HTTPS - 443
