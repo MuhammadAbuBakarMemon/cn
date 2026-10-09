@@ -1,0 +1,51 @@
+! ------------------------------------------------
+! EMAIL (SMTP/POP3) GUI CONFIGURATIONS (Mail Server)
+! ------------------------------------------------
+! 1. Click on the Mail Server and go to the "Services" tab. 
+! 2. Select "EMAIL" from the left menu. 
+! 3. Turn both "SMTP Service" and "POP3 Service" to "ON". 
+! 4. Set Domain Name to: fast.com (Click "Set"). 
+! 5. Add the following users under User Setup (Click "+"): 
+!    - User: cs  | Password: 123 
+!    - User: ee  | Password: 456 
+!    - User: bba | Password: 789 
+
+! ------------------------------------------------
+! EMAIL PC GUI CONFIGURATIONS (Run on PCs)
+! ------------------------------------------------
+! 1. Open a PC (e.g., CS), go to Desktop -> Email. 
+! 2. Configure Mail with:
+!    - Your Name: cs 
+!    - Email Address: cs@fast.com 
+!    - Incoming Mail Server: 10.0.0.2 
+!    - Outgoing Mail Server: 10.0.0.2 
+!    - User Name: cs | Password: 123 
+! 3. Click "Save" and repeat for EE and BBA PCs with their credentials. 
+
+! ------------------------------------------------
+! FTP SERVER GUI CONFIGURATIONS (Mail Server)
+! ------------------------------------------------
+! 1. Click on the Server and go to the "Services" tab. 
+! 2. Select "FTP" and turn the service "On". 
+! 3. Under User Setup, add a new user: 
+!    - Username: Fast 
+!    - Password: 1234 
+!    - Permissions: Check "Read", "Write", and "List". Leave "Delete" and "Rename" unchecked.
+!    - Click "Add". 
+
+! ------------------------------------------------
+! FTP PC COMMAND PROMPT TESTS (Run on PCs, not the Server)
+! ------------------------------------------------
+ftp 10.0.0.2
+
+! When prompted for username, type: Fast
+! When prompted for password, type: 1234
+
+! To upload a file (ensure you created 'test.bin' in the PC's Text Editor first):
+put test.bin
+
+! To list the directory contents of the FTP server:
+dir
+
+! To exit the FTP session:
+quit
