@@ -1,0 +1,48 @@
+Lab 06
+
+! ------------------------------------------------
+! TELNET CONFIGURATION (Run on Switch)
+! ------------------------------------------------
+enable
+configure terminal
+interface vlan 1
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+line vty 0 15
+password cisco
+login
+exit
+enable password cs
+exit
+
+! ------------------------------------------------
+! SSH CONFIGURATION ALONE (Run on Switch)
+! (Assumes Telnet base config / IP & VTY lines are already done)
+! ------------------------------------------------
+enable
+configure terminal
+hostname lab01
+ip domain name fast-cn
+
+! NOTE: After pasting the next command, you will be prompted manually.
+! Type 1024 and hit Enter before pasting the rest.
+crypto key generate rsa
+
+ip ssh version 2
+username admin password cisco
+line vty 0 15
+transport input ssh
+exit
+
+username CS-FAST secret abc
+line vty 0 15
+login local
+end
+
+! ------------------------------------------------
+! PC COMMAND PROMPT TESTS (Run on PCs, not Switch)
+! ------------------------------------------------
+! telnet 192.168.1.1
+! ssh -l admin 192.168.1.1
+! ssh -l CS-FAST 192.168.1.1
